@@ -13,7 +13,8 @@ theme: jekyll-theme-primer # Выберите тему для сайта
 # Исключение файлов и папок из сборки
 exclude:
   - node_modules
-  - crud-back
+  - crud-front/node_modules
+  - crud-back/node_modules
   - vendor
   - README.md
   - .gitignore
