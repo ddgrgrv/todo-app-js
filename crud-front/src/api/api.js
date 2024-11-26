@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/items';
+const API_URL = 'https://todo-app-js-4hjn.onrender.com/api/items';
 
 // Получение списка элементов
 export async function fetchItems() {
