@@ -22,6 +22,10 @@ exclude:
   - package-lock.json
   - .nojekyll
 
+include:
+  - crud-front/dist/bundle.js
+
+
 # Подключение плагинов (при необходимости)
 plugins:
   - jekyll-seo-tag
