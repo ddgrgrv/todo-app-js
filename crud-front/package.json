@@ -1,5 +1,5 @@
 {
-  "homepage": "https://ddgrgrv.github.io/todo-app-js",
+  "homepage": "https://ddgrgrv.github.io/todo-app-js/",
   "scripts": {
     "test": "jest",
     "predeploy": "npm run build",
