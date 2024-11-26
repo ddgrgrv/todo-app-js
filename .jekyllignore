@@ -1,5 +1,5 @@
 node_modules/
 crud-front/node_modules/
-crud-back/
+crud-back/node_modules/
 README.md
 *.log
