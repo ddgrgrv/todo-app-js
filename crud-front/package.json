@@ -1,6 +1,9 @@
 {
+  "homepage": "https://ddgrgrv.github.io/todo-app-js",
   "scripts": {
     "test": "jest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
@@ -28,4 +31,5 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   }
+  
 }
