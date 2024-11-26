@@ -1,0 +1,5 @@
+node_modules/
+crud-front/node_modules/
+crud-back/
+README.md
+*.log
