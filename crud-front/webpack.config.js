@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html', // Шаблон HTML
+      template: './crud-front/public/index.html', // Шаблон HTML
     }),
   ],
   devServer: {
