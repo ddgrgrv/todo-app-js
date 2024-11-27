@@ -1,0 +1,58 @@
+# Основные настройки
+title: "Todo App"
+description: "A simple todo app built with JavaScript"
+baseurl: "" # Укажите базовый URL (например, /repo-name), если проект не в корне домена.
+url: "https://ddgrgrv.github.io/todo-app-js" # Укажите полный URL вашего сайта.
+
+# Выходная директория (не обязательна, по умолчанию - _site)
+destination: ./_site
+
+# Маркировка
+theme: jekyll-theme-primer # Выберите тему для сайта
+
+# Исключение файлов и папок из сборки
+exclude:
+  - node_modules
+  - crud-front/node_modules
+  - crud-back/node_modules
+  - vendor
+  - README.md
+  - .gitignore
+  - package.json
+  - package-lock.json
+  - .nojekyll
+
+include:
+  - crud-front/dist/bundle.js
+
+
+# Подключение плагинов (при необходимости)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Пагинация (если нужно)
+paginate: 10
+paginate_path: "/page:num"
+
+# Markdown-обработчик
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Локальная разработка
+host: 127.0.0.1
+port: 4000
+
+# GitHub Metadata (если подключаете GitHub Pages)
+github:
+  repository: ddgrgrv/todo-app-js
+
+# Язык и кодировка
+lang: en
+encoding: UTF-8
+
+source: crud-front
