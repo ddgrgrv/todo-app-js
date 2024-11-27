@@ -11,16 +11,21 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Подключение к MongoDB
-mongoose.connect('mongodb://localhost:27017/crud-app', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
+// Строка подключения к MongoDB
+const dbURI = process.env.MONGODB_URI; // Берем строку подключения из переменной окружения
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// Подключение к MongoDB
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err);
+    process.exit(1); // Завершаем приложение, если не удалось подключиться к базе данных
+  });
+
+const db = mongoose.connection;
+db.on('error', (err) => console.error('MongoDB connection error:', err));
 db.once('open', () => {
-  console.log('Connected to MongoDB');
+  console.log('MongoDB connection established');
 });
 
 // Маршруты
