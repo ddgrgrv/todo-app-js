@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'), // Папка для сборки
     filename: 'bundle.js', // Имя итогового файла
     clean: true, // Очистка папки dist перед сборкой
+    publicPath: '/todo-app-js/', // Путь для GitHub Pages
   },
   module: {
     rules: [
