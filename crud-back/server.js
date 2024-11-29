@@ -8,7 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://ddgrgrv.github.io', // Указываем разрешённый домен
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешённые методы
+  allowedHeaders: ['Content-Type', 'Authorization'], // Разрешённые заголовки
+}));
 app.use(bodyParser.json());
 
 // Строка подключения к MongoDB
