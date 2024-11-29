@@ -4,7 +4,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main  # или master, если у вас основной бранч называется master
+      - gh-pages  # или master, если у вас основной бранч называется master
 
 jobs:
   build:
@@ -34,6 +34,6 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages  # Указываем бранч для деплоя
-        folder: ./     # Папка, в которой находится скомпилированный проект
+        folder: ../     # Папка, в которой находится скомпилированный проект
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Для доступа к репозиторию
