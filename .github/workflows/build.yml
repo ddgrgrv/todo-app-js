@@ -30,6 +30,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  # Указываем ветку для деплоя
-          folder: ./  # Указываем папку с билдом
+          folder: ./  # Указываем корень проекта, так как файлы уже там
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
