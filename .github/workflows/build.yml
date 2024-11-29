@@ -1,39 +1,35 @@
 name: Build and Deploy
 
-# Запускать каждый раз, когда будет происходить пуш в основной (или другой) бранч
 on:
   push:
     branches:
-      - gh-pages  # или master, если у вас основной бранч называется master
+      - gh-pages  # Укажите вашу основную ветку
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Используем Ubuntu для работы с проектом
+    runs-on: ubuntu-latest
 
     steps:
-    # Шаг 1: Проверяем репозиторий
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    # Шаг 2: Устанавливаем Node.js
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'  # Укажите нужную версию Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-    # Шаг 3: Устанавливаем зависимости
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./crud-front  # Указываем папку, где находится package.json
 
-    # Шаг 4: Выполняем билд проекта
-    - name: Build the project
-      run: npm run build  # Убедитесь, что у вас есть скрипт build в package.json
+      - name: Build the project
+        run: npm run build
+        working-directory: ./crud-front  # Указываем папку с проектом
 
-    # Шаг 5: Деплой на GitHub Pages
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages  # Указываем бранч для деплоя
-        folder: ../     # Папка, в которой находится скомпилированный проект
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Для доступа к репозиторию
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Указываем ветку для деплоя
+          folder: ../  # Указываем папку с билдом
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
