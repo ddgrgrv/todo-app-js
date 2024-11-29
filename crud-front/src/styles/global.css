@@ -82,6 +82,7 @@ body {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    margin-right: 5px;
   }
   
   .item-list button:hover {

@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -9,7 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({
-  origin: 'https://ddgrgrv.github.io', // Указываем разрешённый домен
+  origin: ['https://ddgrgrv.github.io',
+  'http://localhost:3001'], // Указываем разрешённый домен
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешённые методы
   allowedHeaders: ['Content-Type', 'Authorization'], // Разрешённые заголовки
 }));

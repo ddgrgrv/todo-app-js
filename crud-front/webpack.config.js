@@ -35,5 +35,9 @@ module.exports = {
     static: path.join(__dirname, '..'),
     port: 3001, // Локальный сервер на порту 3000
     open: true, // Автоматически открывать браузер
+    hot: true,  // Включает горячую замену модулей
+    liveReload: true, // Включает перезагрузку страницы
+    historyApiFallback: true, // Для работы с роутингом на стороне клиента
+    compress: true,  // Включает сжатие
   },
 };
