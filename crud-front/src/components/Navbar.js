@@ -6,7 +6,7 @@ function Navbar() {
     <nav>
       <ul>
         <li><Link to="/">Home</Link></li> {/* Используем Link */}
-        <li><Link to="/about">About</Link></li>
+        <li><Link to="/about">About About</Link></li>
       </ul>
     </nav>
   );
