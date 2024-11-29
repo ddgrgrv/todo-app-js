@@ -1,10 +1,10 @@
 # Основные настройки
 title: "Todo App"
 description: "A simple todo app built with JavaScript"
-baseurl: "/todo-app-js" # Укажите базовый URL
-url: "https://ddgrgrv.github.io/todo-app-js" # Укажите полный URL вашего сайта.
+baseurl: "todo-app-js" # Укажите базовый URL без ведущего слэша
+url: "https://ddgrgrv.github.io" # Укажите полный URL вашего сайта
 
-# Выходная директория (не обязательна, по умолчанию - _site)
+# Выходная директория (по умолчанию - _site)
 destination: ./_site
 
 # Маркировка
@@ -24,7 +24,7 @@ exclude:
 
 # Включение файла
 include:
-  - crud-front/dist/bundle.js # Убедитесь, что путь правильный и файл существует в этой папке
+  - crud-front/dist/bundle.js # Убедитесь, что путь правильный
 
 # Подключение плагинов (при необходимости)
 plugins:
@@ -55,4 +55,5 @@ github:
 lang: en
 encoding: UTF-8
 
-source: crud-front
+# Папка с исходниками
+source: crud-front/dist
