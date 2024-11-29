@@ -30,6 +30,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html', // Шаблон HTML
     }),
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify(process.env.API_URL || 'http://localhost:3000/api/items'), // Заменяет process.env.API_URL
+    }),
   ],
   devServer: {
     static: path.join(__dirname, '..'),
