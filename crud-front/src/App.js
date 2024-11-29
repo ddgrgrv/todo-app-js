@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/todo-app-js">
       {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
