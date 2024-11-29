@@ -4,9 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js', // Точка входа
   output: {
-    path: path.resolve(__dirname, '.'), // Папка для сборки
+    path: path.resolve(__dirname, '..'), // Папка для сборки
     filename: 'bundle.js', // Имя итогового файла
-    clean: true, // Очистка папки dist перед сборкой
     publicPath: '/todo-app-js/', // Путь для GitHub Pages
   },
   module: {
@@ -33,7 +32,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: path.join(__dirname, '.'),
+    static: path.join(__dirname, '..'),
     port: 3001, // Локальный сервер на порту 3000
     open: true, // Автоматически открывать браузер
   },
