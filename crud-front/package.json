@@ -3,9 +3,9 @@
   "scripts": {
     "test": "jest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d",
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "axios": "^1.7.7",
