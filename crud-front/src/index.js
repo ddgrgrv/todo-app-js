@@ -1,17 +1,17 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App'; // Основной компонент приложения
-import './styles/global.css'; // Ваши стили
-import './styles/home.css'; // Ваши стили
-import './styles/root.css'; // Ваши стили
+import App from './App';
+import './styles/global.css';
+import { AuthContextProvider } from './context/auth-context'; // Провайдер контекста
 
-// Найти корневой элемент
 const rootElement = document.getElementById('root');
 if (rootElement) {
-  const root = createRoot(rootElement); // Создаем "корень" с использованием React 18 API
+  const root = createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <App />
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
     </React.StrictMode>
   );
 }
