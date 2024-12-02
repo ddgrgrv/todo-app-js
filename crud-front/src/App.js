@@ -7,7 +7,7 @@ import RegisterPage from './components/SignUpForm';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/todo-app-js">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
