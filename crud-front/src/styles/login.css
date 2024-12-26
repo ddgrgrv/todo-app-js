@@ -1,0 +1,9 @@
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* width: 33vw; */
+}
+.login-link:hover{
+    color: #0056b3;
+}

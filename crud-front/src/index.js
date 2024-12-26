@@ -4,6 +4,7 @@ import App from './App';
 import './styles/global.css';
 import './styles/home.css';
 import './styles/root.css';
+import './styles/login.css';
 import { AuthContextProvider } from './context/auth-context'; // Провайдер контекста
 
 const rootElement = document.getElementById('root');

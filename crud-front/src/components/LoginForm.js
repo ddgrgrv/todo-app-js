@@ -29,7 +29,7 @@ function LoginPage() {
   return (
     <div>
       <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="login-form">
         <input
           type="email"
           placeholder="Email"
@@ -50,7 +50,7 @@ function LoginPage() {
 
       {/* Ссылка на страницу регистрации */}
       <p>
-        Don't have an account? <Link to="/register">Register here</Link>
+        Don't have an account? <Link to="/register"><span className="login-link">Register here</span></Link>
       </p>
     </div>
   );

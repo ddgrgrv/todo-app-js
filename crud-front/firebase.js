@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; // Импортируйте getAuth для аутентификации
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Конфигурация Firebase
 const firebaseConfig = {
@@ -17,3 +17,25 @@ const app = initializeApp(firebaseConfig);
 
 // Экспорт аутентификации
 export const auth = getAuth(app);
+
+// Функция для получения UID текущего пользователя
+export const getCurrentUserUID = (auth) => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve(user.uid); // UID текущего пользователя
+      } else {
+        reject("Пользователь не авторизован");
+      }
+    });
+  });
+};
+
+// Функция для получения токена текущего пользователя
+export const getUserToken = async (auth) => {
+  const user = auth.currentUser;
+  if (user) {
+    return await user.getIdToken();
+  }
+  throw new Error("Пользователь не авторизован");
+};

@@ -1,20 +1,30 @@
 const express = require('express');
+const { marked } = require('marked');  // Для рендеринга Markdown
 const router = express.Router();
 const Item = require('../models/item');
+const authenticateToken = require('../middleware/authMiddleware'); // Middleware для проверки токена
 
-// Получение всех элементов
-router.get('/', async (req, res) => {
+// Получение всех элементов текущего пользователя
+router.get('/', authenticateToken, async (req, res) => {
   try {
-    const items = await Item.find();
-    res.json(items);
+    const items = await Item.find({ userId: req.user.uid }); // Фильтруем по UID пользователя
+    // Преобразуем описание из Markdown в HTML
+    const itemsWithRenderedDescription = items.map(item => ({
+      ...item.toObject(),
+      description: marked(item.description), // Рендерим Markdown в HTML
+    }));
+    res.json(itemsWithRenderedDescription);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
 // Создание нового элемента
-router.post('/', async (req, res) => {
-  const newItem = new Item(req.body);
+router.post('/', authenticateToken, async (req, res) => {
+  const newItem = new Item({
+    ...req.body,
+    userId: req.user.uid, // Привязываем задачу к UID текущего пользователя
+  });
   try {
     const savedItem = await newItem.save();
     res.status(201).json(savedItem);
@@ -24,9 +34,16 @@ router.post('/', async (req, res) => {
 });
 
 // Обновление элемента
-router.put('/:id', async (req, res) => {
+router.put('/:id', authenticateToken, async (req, res) => {
   try {
-    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedItem = await Item.findOneAndUpdate(
+      { _id: req.params.id, userId: req.user.uid }, // Убедимся, что задача принадлежит текущему пользователю
+      req.body,
+      { new: true }
+    );
+    if (!updatedItem) {
+      return res.status(404).json({ error: 'Элемент не найден или доступ запрещён' });
+    }
     res.json(updatedItem);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -34,10 +51,16 @@ router.put('/:id', async (req, res) => {
 });
 
 // Удаление элемента
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticateToken, async (req, res) => {
   try {
-    await Item.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Item deleted successfully' });
+    const deletedItem = await Item.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user.uid, // Убедимся, что задача принадлежит текущему пользователю
+    });
+    if (!deletedItem) {
+      return res.status(404).json({ error: 'Элемент не найден или доступ запрещён' });
+    }
+    res.json({ message: 'Элемент успешно удалён' });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
