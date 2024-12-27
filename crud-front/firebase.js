@@ -3,13 +3,13 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Конфигурация Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyAMPOg8BAjuMI5q0lLMDLskdiHrIDizqo8",
-  authDomain: "todo-app-js-209d7.firebaseapp.com",
-  projectId: "todo-app-js-209d7",
-  storageBucket: "todo-app-js-209d7.firebasestorage.app",
-  messagingSenderId: "737268023073",
-  appId: "1:737268023073:web:71f9cebbe596fb4c578860",
-  measurementId: "G-HSRTYKKCQS",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 // Инициализация Firebase
